@@ -29,6 +29,7 @@ public class UserRepositoryTests {
         employee.setJobTitle("Manager");
         employee.setImageURL("bdjcbsjbcjad");
         employee.setPhone("0734777806");
+        employee.setUsername("dianaahorvat");
 
         Employee savedEmployee = repo.save(employee);
 

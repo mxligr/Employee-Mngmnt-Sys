@@ -22,14 +22,14 @@ public class UserRepositoryTests {
     @Test
     public void testCreateEmployee(){
         Employee employee = new Employee();
-        employee.setEmail("horvat.diana2000@gmail.com");
-        employee.setFirstName("Diana");
-        employee.setLastName("Horvat");
-        employee.setPassword("0204");
+        employee.setEmail("malina.com");
+        employee.setFirstName("Malina");
+        employee.setLastName("Grama");
+        employee.setPassword("pass");
         employee.setJobTitle("Manager");
         employee.setImageURL("bdjcbsjbcjad");
-        employee.setPhone("0734777806");
-        employee.setUsername("dianaahorvat");
+        employee.setPhone("0752181344");
+        employee.setUsername("mxligr");
 
         Employee savedEmployee = repo.save(employee);
 

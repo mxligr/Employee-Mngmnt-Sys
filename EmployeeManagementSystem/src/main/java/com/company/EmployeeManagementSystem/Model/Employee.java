@@ -27,7 +27,7 @@ public class Employee {
         this.username = username;
     }
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 500)
     private String password;
 
     @Column(nullable = false, length = 50)
@@ -44,10 +44,6 @@ public class Employee {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {

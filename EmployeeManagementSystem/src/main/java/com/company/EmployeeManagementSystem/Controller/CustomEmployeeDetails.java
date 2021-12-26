@@ -10,7 +10,7 @@ public class CustomEmployeeDetails implements UserDetails {
     private Employee employee;
 
     public CustomEmployeeDetails(Employee employee) {
-        this.employee = this.employee;
+        this.employee = employee;
     }
 
     @Override

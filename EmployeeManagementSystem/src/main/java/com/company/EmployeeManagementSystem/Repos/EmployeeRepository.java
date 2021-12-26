@@ -8,5 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     @Query("SELECT e FROM Employee e WHERE e.username = ?1")
-    public Employee findByUsername(String username);
+    Employee findByUsername(String username);
+    @Query("SELECT e FROM Employee e WHERE e.id = ?1")
+    Employee findByID(Long id);
 }

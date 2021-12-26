@@ -2,7 +2,7 @@ package com.company.EmployeeManagementSystem.Controller;
 
 import com.company.EmployeeManagementSystem.Model.Employee;
 
-import com.company.EmployeeManagementSystem.Repos.EmployeeRepository;
+import com.company.EmployeeManagementSystem.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -16,7 +16,7 @@ import java.util.List;
 public class EmployeeController {
 
     @Autowired
-    private EmployeeRepository employeeRepository;
+    private EmployeeService service;
 
     @GetMapping("/login")
     public String showLogin(){
@@ -36,14 +36,14 @@ public class EmployeeController {
         String encodedPassword = passwordEncoder.encode(employee.getPassword());
         employee.setPassword(encodedPassword);
 
-        employeeRepository.save(employee);
+        service.addEmployee(employee);
 
         return "register_success";
     }
 
     @GetMapping("/employees")
     public String listEmployees(Model model) {
-        List<Employee> listEmployees = employeeRepository.findAll();
+        List<Employee> listEmployees = service.findEmployees();
         model.addAttribute("listEmployees", listEmployees);
 
         return "employees";

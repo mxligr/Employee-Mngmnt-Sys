@@ -44,7 +44,6 @@ public class EmployeeController {
     @GetMapping("/employees")
     public String listEmployees(Model model) {
         List<Employee> listEmployees = employeeRepository.findAll();
-        System.out.println(listEmployees);
         model.addAttribute("listEmployees", listEmployees);
 
         return "employees";

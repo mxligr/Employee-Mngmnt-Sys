@@ -14,7 +14,7 @@ public class CustomEmployeeDetailsService implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Employee employee = employeeRepo.findByEmail(username);
+        Employee employee = employeeRepo.findByUsername(username);
         if (employee == null) {
             throw new UsernameNotFoundException("User not found");
         }

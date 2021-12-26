@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a685424-43e3-448d-a57e-4daf31ffd57a" name="Default Changelist" comment="added list employees">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/register_success.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/signup_form.html" afterDir="false" />
+    <list default="true" id="2a685424-43e3-448d-a57e-4daf31ffd57a" name="Default Changelist" comment="added register">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/CustomEmployeeDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/CustomEmployeeDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/CustomEmployeeDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/CustomEmployeeDetailsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/employees.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/employees.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Repos/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Repos/EmployeeRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +147,7 @@
       <workItem from="1640027511841" duration="1385000" />
       <workItem from="1640028922597" duration="8341000" />
       <workItem from="1640277709969" duration="3601000" />
-      <workItem from="1640283627155" duration="22201000" />
+      <workItem from="1640283627155" duration="24785000" />
     </task>
     <task id="LOCAL-00001" summary="added login">
       <created>1640283717295</created>
@@ -165,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640352425778</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added register">
+      <created>1640510243739</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1640510243739</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,43 +190,31 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added login" />
     <MESSAGE value="added list employees" />
-    <option name="LAST_COMMIT_MESSAGE" value="added list employees" />
+    <MESSAGE value="added register" />
+    <option name="LAST_COMMIT_MESSAGE" value="added register" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/CustomEmployeeDetails.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/EmployeeController.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/EmployeeController.java</url>
           <line>34</line>
-          <option name="timeStamp" value="16" />
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/EmployeeController.java</url>
           <line>35</line>
-          <option name="timeStamp" value="17" />
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/EmployeeController.java</url>
           <line>36</line>
-          <option name="timeStamp" value="18" />
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/CustomEmployeeDetails.java</url>
-          <line>21</line>
-          <properties class="com.company.EmployeeManagementSystem.Controller.CustomEmployeeDetails" method="getPassword">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="10" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/EmployeeController.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

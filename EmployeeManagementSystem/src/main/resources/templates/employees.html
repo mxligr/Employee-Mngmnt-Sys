@@ -35,15 +35,16 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="employee: ${listEmployees}">
+            <tr th:each="employee : ${listEmployees}">
                 <td th:text="${employee.id}">User ID</td>
                 <td th:text="${employee.email}">E-mail</td>
                 <td th:text="${employee.firstName}">First Name</td>
                 <td th:text="${employee.lastName}">Last Name</td>
                 <td th:text="${employee.jobTitle}">Job Title</td>
                 <td th:text="${employee.phone}">Phone Number</td>
-                <td><a class="btn btn-sm btn-primary" th:href="@{/edit/{id}(id=${employee.id})}">Edit</a> <a
-                        class="btn btn-sm btn-danger">Delete</a></td>
+                <td><a class="btn btn-sm btn-primary" th:href="@{/edit/{id}(id=${employee.id})}">Edit</a>
+                    <a class="btn btn-sm btn-danger" th:href="@{/delete/{id}(id=${employee.id})}">Delete</a>
+                </td>
             </tr>
             </tbody>
         </table>

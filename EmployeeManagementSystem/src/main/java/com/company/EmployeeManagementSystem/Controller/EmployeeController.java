@@ -55,14 +55,19 @@ public class EmployeeController {
     public String edit(@PathVariable Long id, Model model){
         Employee emp = service.getEmpById(id);
         model.addAttribute("emp", emp);
-        System.out.println(emp.getId());
         return "edit";
     }
 
     @PostMapping("/update")
     public String updateEmployee(@ModelAttribute Employee emp) {
-        System.out.println(emp.getId());
+        emp.setId(emp.getId());
         service.addEmployee(emp);
-        return "redirect:/";
+        return "redirect:/employees";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteEmployee(@PathVariable Long id){
+        service.deleteEmployee(id);
+        return "redirect:/employees";
     }
 }

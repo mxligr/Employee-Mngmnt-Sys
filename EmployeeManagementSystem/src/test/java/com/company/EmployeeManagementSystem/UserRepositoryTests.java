@@ -25,7 +25,7 @@ public class UserRepositoryTests {
         employee.setEmail("malina.com");
         employee.setFirstName("Malina");
         employee.setLastName("Grama");
-        employee.setPassword("pass");
+        employee.setPassword("password");
         employee.setJobTitle("Manager");
         employee.setImageURL("bdjcbsjbcjad");
         employee.setPhone("0752181344");

@@ -26,4 +26,8 @@ public class EmployeeService {
         return e.orElse(null);
     }
 
+    public void deleteEmployee(Long id){
+        repo.deleteById(id);
+    }
+
 }

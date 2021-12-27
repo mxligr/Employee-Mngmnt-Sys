@@ -8,6 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -47,5 +49,20 @@ public class EmployeeController {
         model.addAttribute("listEmployees", listEmployees);
 
         return "employees";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable Long id, Model model){
+        Employee emp = service.getEmpById(id);
+        model.addAttribute("emp", emp);
+        System.out.println(emp.getId());
+        return "edit";
+    }
+
+    @PostMapping("/update")
+    public String updateEmployee(@ModelAttribute Employee emp) {
+        System.out.println(emp.getId());
+        service.addEmployee(emp);
+        return "redirect:/";
     }
 }

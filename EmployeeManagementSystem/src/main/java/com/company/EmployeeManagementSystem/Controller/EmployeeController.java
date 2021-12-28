@@ -58,7 +58,7 @@ public class EmployeeController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(employee.getPassword());
         employee.setPassword(encodedPassword);
-        employee.setAdmin(false);
+        employee.setAdmin(Boolean.FALSE);
 
         if(imageFile.isEmpty()) {
             redirectAttributes.addFlashAttribute("noImageUploadedErrorMessage", "Please choose file to upload.");
@@ -106,21 +106,41 @@ public class EmployeeController {
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Long id, Model model){
         Employee emp = service.getEmpById(id);
+
         model.addAttribute("emp", emp);
         return "edit";
     }
 
     @PostMapping("/update")
-    public String updateEmployee(@ModelAttribute Employee emp, Model model) {
+    public String updateEmployee(@ModelAttribute Employee emp, Model model, @RequestParam("image")MultipartFile imageFile, RedirectAttributes redirectAttributes) {
         emp.setId(emp.getId());
-        service.addEmployee(emp);
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomEmployeeDetails currentEmployee = (CustomEmployeeDetails) auth.getPrincipal();
         Boolean isAdmin = currentEmployee.getAdminRights();
 
-        model.addAttribute("isAdmin", isAdmin);
+        if(imageFile.isEmpty()) {
+            redirectAttributes.addFlashAttribute("noImageUploadedErrorMessage", "Please choose file to upload.");
+            return "redirect:/edit/{id}";
+        }
 
+        File file = imageUploadService.upload(imageFile);
+        if(file == null) {
+            redirectAttributes.addFlashAttribute("uploadFailErrorMessage", "Upload failed.");
+            return "redirect:/edit/{id}";
+        }
+
+        boolean resizeResult =  imageService.resizeImage(file);
+        if(!resizeResult) {
+            redirectAttributes.addFlashAttribute("resizeFailed", "Resize failed.");
+            return "redirect:/edit/{id}";
+        }
+        String[] splitted = file.toString().split("static");
+
+        emp.setImageURL(splitted[1]);
+
+        model.addAttribute("isAdmin", isAdmin);
+        service.addEmployee(emp);
         return "redirect:/employees";
     }
 
@@ -138,8 +158,8 @@ public class EmployeeController {
     }
 
     @PostMapping("/sendRegistrationLink")
-    public String sendRegistrationLink(@RequestParam(value = "newEmployeeEmail", required = true) String newEmployeeEmail,
-                                       @RequestParam(value = "newEmployeeJobTitle", required = true) String newEmployeeJobTitle,
+    public String sendRegistrationLink(@RequestParam(value = "newEmployeeEmail") String newEmployeeEmail,
+                                       @RequestParam(value = "newEmployeeJobTitle") String newEmployeeJobTitle,
                                        RedirectAttributes redirectAttributes, Model model){
         if(!newEmployeeEmail.isEmpty() && !newEmployeeJobTitle.isEmpty()){
             registrationEmail = newEmployeeEmail;

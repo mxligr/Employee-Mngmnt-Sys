@@ -1,6 +1,8 @@
 package com.company.EmployeeManagementSystem.Model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "employees")
@@ -52,6 +54,18 @@ public class Employee {
 
     @Column(nullable = false, length = 1000)
     private String imageURL;
+
+    @OneToMany( cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Task> tasks = new ArrayList<>();;
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
 
     public Long getId() {
         return id;

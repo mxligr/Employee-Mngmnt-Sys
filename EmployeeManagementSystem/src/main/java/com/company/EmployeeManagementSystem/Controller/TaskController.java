@@ -2,6 +2,7 @@ package com.company.EmployeeManagementSystem.Controller;
 
 import com.company.EmployeeManagementSystem.Model.Employee;
 import com.company.EmployeeManagementSystem.Model.Task;
+import com.company.EmployeeManagementSystem.Service.EmployeeService;
 import com.company.EmployeeManagementSystem.Service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -23,26 +24,28 @@ public class TaskController {
     @Autowired
     private TaskService service;
 
+    @Autowired
+    private EmployeeService employeeService;
+
 
     @GetMapping("/tasks")
-    public String listEmployees(Model model) {
+    public String listTasks(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomEmployeeDetails currentEmployee = (CustomEmployeeDetails) auth.getPrincipal();
-        Long employeeId = currentEmployee.getEmployeeId();
+        Employee employee = currentEmployee.getEmployee();
 
-//        List<Task> listTasks = service.findTasksByEmployeeId(employeeId);
-//        model.addAttribute("listTasks", listTasks);
-
-
+        List<Task> listTasks = employee.getTasks();
+        model.addAttribute("listTasks", listTasks);
 
         return "tasks";
     }
 
     @PostMapping("/assignTask/{id}")
     public String assignTask(RedirectAttributes redirectAttributes, Task task,
-                             @RequestParam(value = "employee_id", required = true) int employee_id)
+                             @RequestParam(value = "employeeId", required = true) Long employeeId)
     {
-        task.setEmployee_id(employee_id);
+        Employee employee = employeeService.getEmpById(employeeId);
+        task.setEmployee(employee);
         service.addTask(task);
         redirectAttributes.addFlashAttribute("taskAssignedSuccessfully", "Task Assigned successfully");
 

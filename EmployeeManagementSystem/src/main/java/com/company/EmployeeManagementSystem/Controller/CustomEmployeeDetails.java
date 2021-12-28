@@ -51,6 +51,10 @@ public class CustomEmployeeDetails implements UserDetails {
         return true;
     }
 
+    public Employee getEmployee(){
+        return employee;
+    }
+
     public boolean getAdminRights() {
         return employee.getAdmin();
     }

@@ -39,6 +39,27 @@
         <h1>List of tasks</h1>
     </div>
     <br><br>
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>Priority</th>
+                <th>Description</th>
+                <th>Due date</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody th:if="null != ${listTasks}">
+            <tr th:each="task : ${listTasks}">
+<!--                <td style="text-align: center; vertical-align: middle" th:text="${task.priority}"></td>-->
+
+<!--                <td style="text-align: center; vertical-align: middle" th:text="${task.description}"></td>-->
+<!--                <td style="text-align: center; vertical-align: middle" th:text="${task.dueDate}"></td>-->
+                <!--                <td style="text-align: center; vertical-align: middle"  th:text="${task.}">First Name</td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
 </div>
 </body>

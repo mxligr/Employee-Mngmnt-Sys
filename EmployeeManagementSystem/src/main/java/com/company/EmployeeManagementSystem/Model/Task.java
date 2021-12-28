@@ -17,11 +17,23 @@ public class Task {
     @Column(nullable = false, length = 50)
     private String dueDate;
 
-    @Column(nullable = false, length = 50)
-    private int employee_id;
+//    @Column(nullable = false, length = 50)
+//    private Long employee_id;
+
+    @ManyToOne
+    @JoinColumn(name="employee_id", nullable=false)
+    private Employee employee;
 
     public Long getId() {
         return id;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     public void setId(Long id) {
@@ -44,11 +56,11 @@ public class Task {
         this.dueDate = dueDate;
     }
 
-    public int getEmployee_id() {
-        return employee_id;
-    }
-
-    public void setEmployee_id(int employee_id) {
-        this.employee_id = employee_id;
-    }
+//    public int getEmployee_id() {
+//        return employee_id;
+//    }
+//
+//    public void setEmployee_id(int employee_id) {
+//        this.employee_id = employee_id;
+//    }
 }

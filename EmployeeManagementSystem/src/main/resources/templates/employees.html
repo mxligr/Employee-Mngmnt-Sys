@@ -150,7 +150,7 @@
                             <br>
                             <div class="container text-center">
                                 <form th:action="@{/assignTask/{id}(id=${employee.id})}"  th:object="${task}" method="post">
-                                    <input type="hidden" th:value="${employee.id}"  name="employee_id">
+                                    <input type="hidden" th:value="${employee.id}"  name="employeeId">
                                     <div class="row" style="justify-content: center">
                                         <textarea rows = "7" cols = "50" name = "taskDescription" placeholder="Task description"
                                         th:field="*{description}" class="form-control" required th:value="${task.description}"></textarea>

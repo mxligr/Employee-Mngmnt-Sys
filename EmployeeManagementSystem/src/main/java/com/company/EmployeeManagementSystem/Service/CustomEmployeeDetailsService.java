@@ -1,5 +1,6 @@
-package com.company.EmployeeManagementSystem.Controller;
+package com.company.EmployeeManagementSystem.Service;
 
+import com.company.EmployeeManagementSystem.Controller.CustomEmployeeDetails;
 import com.company.EmployeeManagementSystem.Repos.EmployeeRepository;
 import com.company.EmployeeManagementSystem.Model.Employee;
 
@@ -12,13 +13,18 @@ public class CustomEmployeeDetailsService implements UserDetailsService{
     @Autowired
     private EmployeeRepository employeeRepo;
 
+    private Employee employee;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Employee employee = employeeRepo.findByUsername(username);
+        employee = employeeRepo.findByUsername(username);
         if (employee == null) {
             throw new UsernameNotFoundException("User not found");
         }
         return new CustomEmployeeDetails(employee);
     }
 
+    public Employee getEmployee() {
+        return employee;
+    }
 }

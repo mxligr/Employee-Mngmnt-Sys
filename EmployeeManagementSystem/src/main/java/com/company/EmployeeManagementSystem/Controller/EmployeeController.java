@@ -23,6 +23,9 @@ public class EmployeeController {
     @Autowired
     private EmailService emailService;
 
+    private String registrationEmail;
+    private String jobTitle;
+
     @Autowired
     private EmployeeService service;
 
@@ -39,7 +42,10 @@ public class EmployeeController {
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
-        model.addAttribute("employee", new Employee());
+        Employee emp = new Employee();
+        emp.setEmail(registrationEmail);
+        emp.setJobTitle(jobTitle);
+        model.addAttribute("employee", emp);
 
         return "signup_form";
     }
@@ -107,8 +113,11 @@ public class EmployeeController {
 
     @PostMapping("/sendRegistrationLink")
     public String sendRegistrationLink(@RequestParam(value = "newEmployeeEmail", required = true) String newEmployeeEmail,
+                                       @RequestParam(value = "newEmployeeJobTitle", required = true) String newEmployeeJobTitle,
                                        RedirectAttributes redirectAttributes){
-        if(!newEmployeeEmail.isEmpty()){
+        if(!newEmployeeEmail.isEmpty() && !newEmployeeJobTitle.isEmpty()){
+            registrationEmail = newEmployeeEmail;
+            jobTitle = newEmployeeJobTitle;
             Email email = new Email();
             emailService.sendMail(newEmployeeEmail, "Registration link", "Hello! ", email);
 

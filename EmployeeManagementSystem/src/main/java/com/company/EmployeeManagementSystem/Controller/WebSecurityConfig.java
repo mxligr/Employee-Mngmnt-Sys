@@ -2,6 +2,7 @@ package com.company.EmployeeManagementSystem.Controller;
 
 import javax.sql.DataSource;
 
+import com.company.EmployeeManagementSystem.Service.CustomEmployeeDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

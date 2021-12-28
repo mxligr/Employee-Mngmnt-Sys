@@ -48,6 +48,10 @@ public class CustomEmployeeDetails implements UserDetails {
         return true;
     }
 
+    public boolean getAdminRights() {
+        return employee.getAdmin();
+    }
+
     public String getFullName() {
         return employee.getFirstName() + " " + employee.getLastName();
     }

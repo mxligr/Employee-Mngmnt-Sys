@@ -39,7 +39,7 @@ public class EmailService {
         try{
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
             mimeMessageHelper.setSubject(subject);
-            mimeMessageHelper.setFrom("horvat.diana2000@gmail.com");
+            mimeMessageHelper.setFrom("gramabmalina@gmail.com");
             mimeMessageHelper.setTo(to);
 
             email.setContent(getContentFromTemplate(email.getModel()));

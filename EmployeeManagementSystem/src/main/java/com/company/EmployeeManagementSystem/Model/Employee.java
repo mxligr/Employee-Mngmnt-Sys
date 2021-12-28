@@ -30,7 +30,6 @@ public class Employee {
         this.admin = admin;
     }
 
-
     public String getUsername() {
         return username;
     }
@@ -117,4 +116,5 @@ public class Employee {
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
+
 }

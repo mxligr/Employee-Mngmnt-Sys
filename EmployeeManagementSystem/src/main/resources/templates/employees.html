@@ -2,32 +2,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
-    <title>List Users</title>
+    <title>Employee Management System</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../static/css/tooltips_design.css" th:href="@{/css/tooltips_design.css}">
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" th:src="@{/add_new_employee_modal.js}"></script>
-
+    <script type="text/javascript" th:src="@{js/add_new_employee_modal.js}"></script>
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg></script>
 </head>
 <body>
 
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Employee Management</a>
+        <a class="navbar-brand" href="javascript:void(0);">Employee Management</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="nav navbar-nav navbar-right" style="padding-left: 68%">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" th:href="@{/tasks}">List Of Tasks</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" th:href="@{/employees}">List Of Employees</a>
                 </li>
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link" th:href="@{/register}">Register</a>-->
-                <!--                </li>-->
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/login}">Login</a>
+                    <a class="nav-link" th:href="@{/logout}">Logout</a>
                 </li>
             </ul>
         </div>
@@ -35,28 +36,32 @@
 </nav>
 <!--Navbar-->
 
-<div class="row">
-    <div class="container text-left col-6" style="margin-top: 10px">
-        <p style="margin-left: 80px">
-            Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
-        </p>
-    </div>
-    <div class="container text-right col-6" style="margin-top: 10px; margin-left: 0px; margin-right: 0px">
-        <form th:action="@{/logout}" method="post" style="width: fit-content; margin-right: 80px; float: right">
-            <input type="submit" style="margin-top: 5px" class="btn-sm btn-danger" value="Sign Out"/>
-        </form>
-    </div>
-</div>
+<!--<div class="row">-->
+<!--    <div class="container text-left col-6" style="margin-top: 10px">-->
+<!--        <p style="margin-left: 80px">-->
+<!--            Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>-->
+<!--        </p>-->
+<!--    </div>-->
+<!--    <div class="container text-right col-6" style="margin-top: 10px; margin-left: 0px; margin-right: 0px">-->
+<!--        <form th:action="@{/logout}" method="post" style="width: fit-content; margin-right: 80px; float: right">-->
+<!--            <input type="submit" style="margin-top: 5px" class="btn-sm btn-danger" value="Sign Out"/>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+
 <div class="container text-center">
+    <br>
     <div>
         <h1>List of Employees</h1>
     </div>
     <br><br>
 
     <div class="row" style="margin: 10px; padding-left: 0px; margin-left: 0px">
-        <a href="javascript:void(0);" class="btn btn-md btn-primary modal-ctrl-btn" style="margin-top: 5px;">
+        <a href="javascript:void(0);" class="btn btn-md btn-primary modal-ctrl-btn" style="margin-top: 5px;"
+           th:if="true == ${isAdmin}" >
             Add new employee
         </a>
+        <div class="alert alert-success" style="width: fit-content; margin-left: 20px; margin-bottom: 0px" role="alert" th:text="${taskAssignedSuccessfully}" th:if="${taskAssignedSuccessfully}"></div>
         <div class="alert alert-success" style="width: fit-content; margin-left: 20px; margin-bottom: 0px" role="alert" th:text="${success}" th:if="${success}"></div>
         <div class="alert alert-danger" style="width: fit-content; margin-left: 20px; margin-bottom: 0px" role="alert" th:text="${error}" th:if="${error}"></div>
     </div>
@@ -74,6 +79,8 @@
                         <div class="row" style="justify-content: center">
                             <input type="text" id="newEmployeeEmail" name="newEmployeeEmail"
                                    placeholder="email">
+                        </div>
+                        <div class="row" style="justify-content: center; margin-top: 5px">
                             <input type="text" id="newEmployeeJobTitle" name="newEmployeeJobTitle"
                                    placeholder="job title">
                         </div>
@@ -99,7 +106,7 @@
                 <th>Last Name</th>
                 <th>Job Title</th>
                 <th>Phone Number</th>
-                <th>Action</th>
+                <th th:if="true == ${isAdmin}" >Action</th>
             </tr>
             </thead>
             <tbody>
@@ -110,9 +117,61 @@
                 <td style="text-align: center; vertical-align: middle" th:text="${employee.lastName}">Last Name</td>
                 <td style="text-align: center; vertical-align: middle" th:text="${employee.jobTitle}">Job Title</td>
                 <td style="text-align: center; vertical-align: middle" th:text="${employee.phone}">Phone Number</td>
-                <td style="text-align: center; vertical-align: middle"><a class="btn btn-sm btn-primary" th:href="@{/edit/{id}(id=${employee.id})}">Edit</a>
-                    <a class="btn btn-sm btn-danger" th:href="@{/delete/{id}(id=${employee.id})}">Delete</a>
+                <td style="text-align: center; vertical-align: middle" th:if="true == ${isAdmin}">
+                    <a class="btn tooltipIcon mr-1 modal-assignTask-ctrl-btn"
+                       th:attr="id=${'assignTask-' + employee.id}"
+                       data-toggle="tooltip" data-placement="top"
+                       style="padding-right: 2px">
+                        <i class="fas fa-plus-square"></i>
+                        <span class="tooltipCard tooltipCardtext">Assign new task</span>
+                    </a>
+                    <a class="btn tooltipIcon mr-1"
+                       data-toggle="tooltip" data-placement="top"
+                       style="padding-right: 2px"
+                       th:href="@{/edit/{id}(id=${employee.id})}">
+                        <i class="fas fa-edit"></i>
+                        <span class="tooltipCard tooltipCardtext">Edit employee</span>
+                    </a>
+                    <a class="btn tooltipIcon mr-1"
+                       data-toggle="tooltip" data-placement="top"
+                       style="padding-right: 2px"
+                       th:href="@{/delete/{id}(id=${employee.id})}">
+                        <i class="fas fa-trash-alt"></i>
+                        <span class="tooltipCard tooltipCardtext">Delete employee</span>
+                    </a>
                 </td>
+
+                <div class="modal" th:attr="id=${'assignTask_modal-' + employee.id}">
+                    <div class="modal-content" style="width: 40%!important;background-color: #fefefe;margin: 15% auto; padding: 20px;border: 1px solid #888;max-height: 500px !important;">
+                        <div class="container-fluid" style="overflow: auto">
+                            <span class="close" id="close_assignTask_modal">&times; </span>
+                            <h5 class="text-dark text-bold" style="text-align:center">
+                                Assign new task</h5>
+                            <br>
+                            <div class="container text-center">
+                                <form th:action="@{/assignTask/{id}(id=${employee.id})}"  th:object="${task}" method="post">
+                                    <input type="hidden" th:value="${employee.id}"  name="employee_id">
+                                    <div class="row" style="justify-content: center">
+                                        <textarea rows = "7" cols = "50" name = "taskDescription" placeholder="Task description"
+                                        th:field="*{description}" class="form-control" required th:value="${task.description}"></textarea>
+                                    </div>
+                                    <div class="row" style="justify-content: center; margin-top: 10px; padding-right: 19px">
+                                        <label class="col-6" style="text-align: left; padding-left: 19px">Due date: </label>
+                                        <input type="date" id="dueDate" name="due-date"
+                                        th:field="*{dueDate}" class="form-control col-6" required th:value="${task.dueDate}">
+                                    </div>
+                                    <div class="row" style="justify-content: center; margin-top: 20px">
+                                        <input type="submit" id="assignTask"
+                                               class="btn-md btn-primary"
+                                               value="Assign task">
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </tr>
             </tbody>
         </table>

@@ -3,11 +3,14 @@ package com.company.EmployeeManagementSystem.Controller;
 import com.company.EmployeeManagementSystem.Model.Email;
 import com.company.EmployeeManagementSystem.Model.Employee;
 
+import com.company.EmployeeManagementSystem.Model.Task;
 import com.company.EmployeeManagementSystem.Service.EmailService;
 import com.company.EmployeeManagementSystem.Service.EmployeeService;
 import com.company.EmployeeManagementSystem.Service.ImageService;
 import com.company.EmployeeManagementSystem.Service.ImageUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -88,6 +91,15 @@ public class EmployeeController {
         List<Employee> listEmployees = service.findEmployees();
         model.addAttribute("listEmployees", listEmployees);
 
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomEmployeeDetails currentEmployee = (CustomEmployeeDetails) auth.getPrincipal();
+        Boolean isAdmin = currentEmployee.getAdminRights();
+
+        model.addAttribute("isAdmin", isAdmin);
+
+        Task task = new Task();
+        model.addAttribute("task", task);
+
         return "employees";
     }
 
@@ -99,22 +111,36 @@ public class EmployeeController {
     }
 
     @PostMapping("/update")
-    public String updateEmployee(@ModelAttribute Employee emp) {
+    public String updateEmployee(@ModelAttribute Employee emp, Model model) {
         emp.setId(emp.getId());
         service.addEmployee(emp);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomEmployeeDetails currentEmployee = (CustomEmployeeDetails) auth.getPrincipal();
+        Boolean isAdmin = currentEmployee.getAdminRights();
+
+        model.addAttribute("isAdmin", isAdmin);
+
         return "redirect:/employees";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteEmployee(@PathVariable Long id){
+    public String deleteEmployee(@PathVariable Long id, Model model){
         service.deleteEmployee(id);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomEmployeeDetails currentEmployee = (CustomEmployeeDetails) auth.getPrincipal();
+        Boolean isAdmin = currentEmployee.getAdminRights();
+
+        model.addAttribute("isAdmin", isAdmin);
+
         return "redirect:/employees";
     }
 
     @PostMapping("/sendRegistrationLink")
     public String sendRegistrationLink(@RequestParam(value = "newEmployeeEmail", required = true) String newEmployeeEmail,
                                        @RequestParam(value = "newEmployeeJobTitle", required = true) String newEmployeeJobTitle,
-                                       RedirectAttributes redirectAttributes){
+                                       RedirectAttributes redirectAttributes, Model model){
         if(!newEmployeeEmail.isEmpty() && !newEmployeeJobTitle.isEmpty()){
             registrationEmail = newEmployeeEmail;
             jobTitle = newEmployeeJobTitle;
@@ -125,6 +151,12 @@ public class EmployeeController {
         }else{
             redirectAttributes.addFlashAttribute("error", "The email field is required");
         }
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomEmployeeDetails currentEmployee = (CustomEmployeeDetails) auth.getPrincipal();
+        Boolean isAdmin = currentEmployee.getAdminRights();
+
+        model.addAttribute("isAdmin", isAdmin);
 
         return "redirect:/employees";
     }

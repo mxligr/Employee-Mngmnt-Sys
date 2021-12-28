@@ -11,10 +11,10 @@ public class Employee {
     private Long id;
 
     @Column(nullable = false, length = 50)
-    private String firstName;
+    private String lastName;
 
     @Column(nullable = false, length = 50)
-    private String lastName;
+    private String firstName;
 
     @Column(nullable = false, length = 50)
     private String username;

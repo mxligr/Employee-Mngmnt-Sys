@@ -1,0 +1,42 @@
+.tooltipIcon {
+    position: relative;
+}
+
+.tooltipCard {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    z-index: 1;
+    left: 0px;
+    /*top: -90px;*/
+    transform: translate(-20px, -130%);
+}
+
+.tooltipIcon:hover .tooltipCard  {
+    display: inline-block;
+    opacity: 1;
+    transition: 0.5s;
+}
+.tooltipIcon:hover .bearbeiten-card  {
+    display: inline-block;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.tooltipCardtext {
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-wrap: normal;
+    background-color: #dc3545;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    line-height: 10px;
+    width: fit-content;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.textGreyedOut{
+    background-color: #868686;
+}

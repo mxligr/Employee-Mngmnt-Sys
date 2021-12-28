@@ -28,6 +28,9 @@ public class CustomEmployeeDetails implements UserDetails {
         return employee.getUsername();
     }
 
+    public Long getEmployeeId(){
+        return employee.getId();
+    }
     @Override
     public boolean isAccountNonExpired() {
         return true;

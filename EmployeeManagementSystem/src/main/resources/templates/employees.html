@@ -6,19 +6,60 @@
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" th:src="@{/add_new_employee_modal.js}"></script>
+
 </head>
 <body>
-<div class="container text-center">
-    <div>
-        <form th:action="@{/logout}" method="post">
-            <p>
-                Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
-            </p>
-            <input type="submit" value="Sign Out"/>
+<div class="row">
+    <div class="container text-left col-6" style="margin-top: 10px">
+        <p style="margin-left: 80px">
+            Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+        </p>
+    </div>
+    <div class="container text-right col-6" style="margin-top: 10px; margin-left: 0px; margin-right: 0px">
+        <form th:action="@{/logout}" method="post" style="width: fit-content; margin-right: 80px; float: right">
+            <input type="submit" style="margin-top: 5px" class="btn-sm btn-danger" value="Sign Out"/>
         </form>
     </div>
+</div>
+<div class="container text-center">
     <div>
         <h1>List of Employees</h1>
+    </div>
+    <br><br>
+
+    <div class="row" style="margin: 10px; padding-left: 0px; margin-left: 0px">
+        <a href="javascript:void(0);" class="btn btn-md btn-primary modal-ctrl-btn" style="margin-top: 5px;">
+            Add new employee
+        </a>
+        <div class="alert alert-success" style="width: fit-content; margin-left: 20px; margin-bottom: 0px" role="alert" th:text="${success}" th:if="${success}"></div>
+        <div class="alert alert-danger" style="width: fit-content; margin-left: 20px; margin-bottom: 0px" role="alert" th:text="${error}" th:if="${error}"></div>
+    </div>
+
+    <div class="modal" id="add_new_employee_modal">
+        <div class="modal-content" style="width: 40%!important;background-color: #fefefe;margin: 15% auto; padding: 20px;border: 1px solid #888;max-height: 500px !important;">
+            <div class="container-fluid" style="overflow: auto">
+                <span class="close"
+                      id="modal_close_span">&times; </span>
+                <h5 class="text-dark text-bold" style="text-align:center">
+                    Add new employee</h5>
+                <br>
+                <div class="container text-center">
+                    <form th:action="@{/sendRegistrationLink}" method="post">
+                        <div class="row" style="justify-content: center">
+                            <input type="text" id="newEmployeeEmail" name="newEmployeeEmail"
+                                   placeholder="Employee email">
+                        </div>
+                        <div class="row" style="justify-content: center; margin-top: 10px">
+                            <input type="submit" id="sendRegistrationLink"
+                                   class="btn-md btn-primary"
+                                   value="Send registration link">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
     </div>
 
     <div>

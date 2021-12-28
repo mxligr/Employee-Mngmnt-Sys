@@ -19,6 +19,18 @@ public class Employee {
     @Column(nullable = false, length = 50)
     private String username;
 
+    @Column(nullable = false, length = 1)
+    private Boolean admin;
+
+    public Boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
+    }
+
+
     public String getUsername() {
         return username;
     }

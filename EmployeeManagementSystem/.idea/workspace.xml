@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a685424-43e3-448d-a57e-4daf31ffd57a" name="Default Changelist" comment="added buggy update employee">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Model/Email.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Service/EmailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/add_new_employee_modal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/registerEmailTemplate.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/EmployeeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Service/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/employees.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/employees.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/company/EmployeeManagementSystem/UserRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/company/EmployeeManagementSystem/UserRepositoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +28,7 @@
         <option value="Interface" />
         <option value="Class" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -63,6 +69,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="SQL Resolution Scopes" />
   </component>
   <component name="RecentsManager">
@@ -88,13 +95,15 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.EmployeeManagementSystemApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -155,6 +164,7 @@
       <workItem from="1640277709969" duration="3601000" />
       <workItem from="1640283627155" duration="47153000" />
       <workItem from="1640631800630" duration="2805000" />
+      <workItem from="1640686633861" duration="1972000" />
     </task>
     <task id="LOCAL-00001" summary="added login">
       <created>1640283717295</created>

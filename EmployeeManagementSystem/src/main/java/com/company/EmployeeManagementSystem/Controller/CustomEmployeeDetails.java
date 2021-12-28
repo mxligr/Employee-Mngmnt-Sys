@@ -1,9 +1,13 @@
 package com.company.EmployeeManagementSystem.Controller;
 
 import com.company.EmployeeManagementSystem.Model.Employee;
+
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class CustomEmployeeDetails implements UserDetails {
@@ -12,6 +16,13 @@ public class CustomEmployeeDetails implements UserDetails {
     public CustomEmployeeDetails(Employee employee) {
         this.employee = employee;
     }
+
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        List<SimpleGrantedAuthority> auth = new ArrayList<>();
+//        auth.add(new SimpleGrantedAuthority(employee.getRole()));
+//        return auth;
+//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -58,5 +69,7 @@ public class CustomEmployeeDetails implements UserDetails {
     public String getFullName() {
         return employee.getFirstName() + " " + employee.getLastName();
     }
+
+
 
 }

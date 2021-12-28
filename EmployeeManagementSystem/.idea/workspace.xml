@@ -4,20 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a685424-43e3-448d-a57e-4daf31ffd57a" name="Default Changelist" comment="Added profile picture">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/TaskController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Model/Task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Repos/TaskRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Service/TaskService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/tooltips_design.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/tasks.html" afterDir="false" />
+    <list default="true" id="2a685424-43e3-448d-a57e-4daf31ffd57a" name="Default Changelist" comment="modified registration form, added navbar everywhere">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/diana.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/diana_200.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/diana.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/403.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/CustomEmployeeDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/CustomEmployeeDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/add_new_employee_modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/add_new_employee_modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Service/CustomEmployeeDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Service/CustomEmployeeDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/additional-spring-configuration-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/additional-spring-configuration-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/edit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/employees.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/employees.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/company/EmployeeManagementSystem/UserRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/company/EmployeeManagementSystem/UserRepositoryTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +57,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="azure&#10;mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RequestMappingsPanelOrder0" value="0" />
@@ -73,6 +76,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="SQL Resolution Scopes" />
   </component>
@@ -100,15 +104,13 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.EmployeeManagementSystemApplication">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

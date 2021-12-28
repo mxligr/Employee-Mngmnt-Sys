@@ -34,21 +34,21 @@ public class UserRepositoryTests {
         employee.setImageURL("animegirl.jpg");
         employee.setPhone("0752181344");
         employee.setUsername("mxligr");
-        employee.setAdmin(true);
+        employee.setAdmin(Boolean.TRUE);
 
-        Employee employee2 = new Employee();
-        employee2.setEmail("diana@gmail.com");
-        employee2.setFirstName("Diana");
-        employee2.setLastName("Horvat");
-        employee2.setPassword("123456");
-        BCryptPasswordEncoder passwordEncoder2 = new BCryptPasswordEncoder();
-        String encodedPassword2 = passwordEncoder2.encode(employee2.getPassword());
-        employee2.setPassword(encodedPassword2);
-        employee2.setJobTitle("Manager");
-        employee2.setImageURL("diana.jpg");
-        employee2.setPhone("0734777806");
-        employee2.setUsername("dianaahorvat");
-        employee2.setAdmin(true);
+//        Employee employee2 = new Employee();
+//        employee2.setEmail("diana@gmail.com");
+//        employee2.setFirstName("Diana");
+//        employee2.setLastName("Horvat");
+//        employee2.setPassword("123456");
+//        BCryptPasswordEncoder passwordEncoder2 = new BCryptPasswordEncoder();
+//        String encodedPassword2 = passwordEncoder2.encode(employee2.getPassword());
+//        employee2.setPassword(encodedPassword2);
+//        employee2.setJobTitle("Manager");
+//        employee2.setImageURL("diana.jpg");
+//        employee2.setPhone("0734777806");
+//        employee2.setUsername("dianaahorvat");
+//        employee2.setAdmin(Boolean.FALSE);
 
         Employee savedEmployee = repo.save(employee);
 

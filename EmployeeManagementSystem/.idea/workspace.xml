@@ -4,16 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a685424-43e3-448d-a57e-4daf31ffd57a" name="Default Changelist" comment="Flow task">
+    <list default="true" id="2a685424-43e3-448d-a57e-4daf31ffd57a" name="Default Changelist" comment="modified registration form, added navbar everywhere">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/ForgotPasswordController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/Utility.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/reset_password.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/forgot_password_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/message.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/reset_password_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/CustomEmployeeDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/CustomEmployeeDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/EmployeeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Model/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Repos/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Repos/TaskRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Service/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/employees.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/employees.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tasks.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Repos/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Repos/EmployeeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Service/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,10 +30,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
+        <option value="JavaScript File" />
         <option value="HTML File" />
       </list>
     </option>

@@ -55,6 +55,9 @@ public class Employee {
     @Column(nullable = false, length = 1000)
     private String imageURL;
 
+    @Column(name = "reset_password_token", length = 30)
+    private String resetPasswordToken;
+
     @OneToMany( cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<Task> tasks = new ArrayList<>();;
@@ -131,4 +134,11 @@ public class Employee {
         this.imageURL = imageURL;
     }
 
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
+    }
 }

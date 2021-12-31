@@ -1,12 +1,16 @@
 package com.company.EmployeeManagementSystem.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "employees")
-public class Employee {
+public class Employee implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,9 +62,9 @@ public class Employee {
     @Column(name = "reset_password_token", length = 30)
     private String resetPasswordToken;
 
-    @OneToMany( cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    private List<Task> tasks = new ArrayList<>();;
+    @JsonIgnore
+    @OneToMany(mappedBy = "employee")
+    private List<Task> tasks = new ArrayList<Task>();;
 
     public List<Task> getTasks() {
         return tasks;
@@ -68,6 +72,11 @@ public class Employee {
 
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public void addTaskToEmployee(Task task){
+        tasks.add(task);
+        task.setEmployee(this);
     }
 
     public Long getId() {

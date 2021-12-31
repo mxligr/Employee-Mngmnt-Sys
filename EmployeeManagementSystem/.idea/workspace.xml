@@ -4,6 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="2a685424-43e3-448d-a57e-4daf31ffd57a" name="Default Changelist" comment="completed task flow">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/mark_tasks_as_completed.js" afterDir="false" />
     <list default="true" id="2a685424-43e3-448d-a57e-4daf31ffd57a" name="Default Changelist" comment="modified registration form, added navbar everywhere">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/ForgotPasswordController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Controller/Utility.java" afterDir="false" />
@@ -21,6 +23,13 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Service/EmployeeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Model/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/EmployeeManagementSystem/Service/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/add_new_employee_modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/add_new_employee_modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/employees.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/employees.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tasks.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +44,7 @@
         <option value="Class" />
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -172,7 +182,9 @@
       <workItem from="1640277709969" duration="3601000" />
       <workItem from="1640283627155" duration="47153000" />
       <workItem from="1640631800630" duration="2805000" />
-      <workItem from="1640686633861" duration="36426000" />
+      <workItem from="1640686633861" duration="36794000" />
+      <workItem from="1640794760151" duration="4691000" />
+      <workItem from="1640884506990" duration="15034000" />
     </task>
     <task id="LOCAL-00001" summary="added login">
       <created>1640283717295</created>
@@ -237,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640717835166</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="completed task flow">
+      <created>1640731120961</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1640731120961</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +284,8 @@
     <MESSAGE value="added registration by email" />
     <MESSAGE value="Added profile picture" />
     <MESSAGE value="Flow task" />
-    <option name="LAST_COMMIT_MESSAGE" value="Flow task" />
+    <MESSAGE value="completed task flow" />
+    <option name="LAST_COMMIT_MESSAGE" value="completed task flow" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

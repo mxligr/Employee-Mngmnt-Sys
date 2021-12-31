@@ -26,7 +26,7 @@ function disablePastDates() {
         modal.css("display", "none");
     });
 
-})
+});
 
 $(document).ready(function () {
     disablePastDates();
@@ -53,4 +53,14 @@ $(document).ready(function () {
         let modal = $("#assignTask_modal");
         modal.css("display", "block");
     });
-})
+
+    let dropdown_items =document.getElementsByClassName("dropdown-item");
+
+    for (let i = 0; i < dropdown_items.length; i++) {
+        dropdown_items[i].addEventListener("click", function () {
+            let dropdownValue = $(this).attr('id');
+            $("#taskPriorityTextArea-" + employee_id).text(dropdownValue);
+        });
+    }
+});
+

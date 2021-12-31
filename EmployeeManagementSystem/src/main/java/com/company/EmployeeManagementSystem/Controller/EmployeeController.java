@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.transaction.Transactional;
 import java.io.File;
 import java.util.List;
 
+@Transactional
 @Controller
 public class EmployeeController {
     @Autowired
@@ -99,8 +101,15 @@ public class EmployeeController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomEmployeeDetails currentEmployee = (CustomEmployeeDetails) auth.getPrincipal();
         Boolean isAdmin = currentEmployee.getAdminRights();
+        Long emplId = currentEmployee.getEmployeeId();
+        Employee emp = service.getEmpById(emplId);
+        Boolean noTasks = emp.getTasks().isEmpty();
 
+        Employee currentLoggedEmployee = currentEmployee.getEmployee();
+
+        model.addAttribute("noTasks", noTasks);
         model.addAttribute("isAdmin", isAdmin);
+        model.addAttribute("currentEmployee", currentLoggedEmployee);
 
         Task task = new Task();
         model.addAttribute("task", task);

@@ -1,5 +1,7 @@
 package com.company.EmployeeManagementSystem.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -17,12 +19,35 @@ public class Task {
     @Column(nullable = false, length = 50)
     private String dueDate;
 
-//    @Column(nullable = false, length = 50)
-//    private Long employee_id;
+    @Column(nullable = false, length = 10)
+    private String priority;
 
-    @ManyToOne
-    @JoinColumn(name="employee_id", nullable=false)
+    @Column(nullable = false, length = 10)
+    private Boolean completed;
+
+    public Boolean getCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(Boolean completed) {
+        this.completed = completed;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="employee_id", referencedColumnName = "id")
     private Employee employee;
+
+    public void assignEmployee(Employee employee){
+        this.employee = employee;
+    }
 
     public Long getId() {
         return id;

@@ -7,6 +7,8 @@
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg></script>
+    <script type="text/javascript" th:src="@{/js/mark_tasks_as_completed.js}"></script>
+
 </head>
 <body>
 
@@ -50,12 +52,17 @@
             </tr>
             </thead>
             <tbody th:if="null != ${listTasks}">
-            <tr th:each="task : ${listTasks}">
-<!--                <td style="text-align: center; vertical-align: middle" th:text="${task.priority}"></td>-->
-
-<!--                <td style="text-align: center; vertical-align: middle" th:text="${task.description}"></td>-->
-<!--                <td style="text-align: center; vertical-align: middle" th:text="${task.dueDate}"></td>-->
-                <!--                <td style="text-align: center; vertical-align: middle"  th:text="${task.}">First Name</td>-->
+            <tr th:each="task : ${listTasks}" th:if="false == ${task.completed}">
+                <td th:if="High == ${task.priority}" style="text-align: center; vertical-align: middle; background-color: #dc3545" th:text="${task.priority}"></td>
+                <td th:if="Low == ${task.priority}" style="text-align: center; vertical-align: middle; background-color: #f1c75b" th:text="${task.priority}"></td>
+                <td style="text-align: center; vertical-align: middle" th:text="${task.description}"></td>
+                <td style="text-align: center; vertical-align: middle" th:text="${task.dueDate}"></td>
+                <td style="text-align: center; vertical-align: middle; background-color: #28a745">
+                    <a class="btn-md btn-success markAsCompleted" th:attr="id=${'markAsCompleted-' + task.id}">
+<!--                       th:href="@{/taskCompleted/{taskId} (taskId=${task.id})}">-->
+                        Mark as completed
+                    </a>
+                </td>
             </tr>
             </tbody>
         </table>

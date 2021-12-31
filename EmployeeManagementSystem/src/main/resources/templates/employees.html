@@ -7,8 +7,9 @@
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../static/css/tooltips_design.css" th:href="@{/css/tooltips_design.css}">
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" th:src="@{js/add_new_employee_modal.js}"></script>
+    <script type="text/javascript" th:src="@{/js/add_new_employee_modal.js}"></script>
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg></script>
 </head>
 <body>
@@ -23,7 +24,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav navbar-right" style="padding-left: 68%">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" th:href="@{/tasks}">List Of Tasks</a>
+                    <a class="nav-link" aria-current="page"
+                       th:if="false == ${noTasks}"
+                       style="color: #dc3545"
+                       th:href="@{/tasks/{id}(id=${currentEmployee.id})}">List Of Tasks</a>
+                    <a class="nav-link" aria-current="page"
+                       th:if="true == ${noTasks}"
+                       th:href="@{/tasks/{id}(id=${currentEmployee.id})}">List Of Tasks</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" th:href="@{/employees}">List Of Employees</a>
@@ -36,19 +43,6 @@
     </div>
 </nav>
 <!--Navbar-->
-
-<!--<div class="row">-->
-<!--    <div class="container text-left col-6" style="margin-top: 10px">-->
-<!--        <p style="margin-left: 80px">-->
-<!--            Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>-->
-<!--        </p>-->
-<!--    </div>-->
-<!--    <div class="container text-right col-6" style="margin-top: 10px; margin-left: 0px; margin-right: 0px">-->
-<!--        <form th:action="@{/logout}" method="post" style="width: fit-content; margin-right: 80px; float: right">-->
-<!--            <input type="submit" style="margin-top: 5px" class="btn-sm btn-danger" value="Sign Out"/>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</div>-->
 
 <div class="container text-center">
     <br>
@@ -160,6 +154,20 @@
                                         <label class="col-6" style="text-align: left; padding-left: 19px">Due date: </label>
                                         <input type="date" id="dueDate" name="due-date"
                                         th:field="*{dueDate}" class="form-control col-6" required th:value="${task.dueDate}">
+                                    </div>
+                                    <br>
+                                    <div class="row dropdown">
+                                        <button style="margin-left: 10px" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Priority
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" id="Low" href="javascript:void(0);">Low</a>
+                                            <a class="dropdown-item" id="High" href="javascript:void(0);">High</a>
+                                        </div>
+                                        <div>
+                                            <textarea style="margin-left: 60px" rows = "1" cols = "20" name = "taskPriority" th:attr="id=${'taskPriorityTextArea-' + employee.id}" placeholder="Select task priority"
+                                                      th:field="*{priority}" class="form-control" required readonly th:value="${task.priority}"></textarea>
+                                        </div>
                                     </div>
                                     <div class="row" style="justify-content: center; margin-top: 20px">
                                         <input type="submit" id="assignTask"

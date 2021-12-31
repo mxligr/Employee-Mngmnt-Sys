@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskService {
@@ -15,6 +16,11 @@ public class TaskService {
 
     public void addTask(Task t) {
         repo.save(t);
+    }
+
+    public Task getTaskById(Long id){
+        Optional<Task> e = repo.findById(id);
+        return e.orElse(null);
     }
 
 }

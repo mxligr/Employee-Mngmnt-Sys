@@ -1,5 +1,6 @@
 package com.company.EmployeeManagementSystem.Controller;
 
+import com.company.EmployeeManagementSystem.EmployeeManagementSystemApplication;
 import com.company.EmployeeManagementSystem.Model.Email;
 import com.company.EmployeeManagementSystem.Model.Employee;
 
@@ -8,6 +9,8 @@ import com.company.EmployeeManagementSystem.Service.EmailService;
 import com.company.EmployeeManagementSystem.Service.EmployeeService;
 import com.company.EmployeeManagementSystem.Service.ImageService;
 import com.company.EmployeeManagementSystem.Service.ImageUploadService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,6 +29,8 @@ import java.util.List;
 @Transactional
 @Controller
 public class EmployeeController {
+    private static final Logger logger = LoggerFactory.getLogger(EmployeeManagementSystemApplication.class);
+
     @Autowired
     private EmailService emailService;
 
@@ -45,8 +50,10 @@ public class EmployeeController {
     public String viewLoginPage() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            logger.info("User enter on the login page");
             return "login";
         }
+        logger.warn("User was already logged in so it was redirected to the home page");
         return "redirect:/";
     }
 
@@ -56,6 +63,8 @@ public class EmployeeController {
         emp.setEmail(registrationEmail);
         emp.setJobTitle(jobTitle);
         model.addAttribute("employee", emp);
+
+        logger.info("User received the signUp form");
 
         return "signup_form";
     }
@@ -69,26 +78,30 @@ public class EmployeeController {
 
         if(imageFile.isEmpty()) {
             redirectAttributes.addFlashAttribute("noImageUploadedErrorMessage", "Please choose file to upload.");
+            logger.error("There was an error while uploading the user image");
             return "redirect:/register";
         }
 
         File file = imageUploadService.upload(imageFile);
         if(file == null) {
             redirectAttributes.addFlashAttribute("uploadFailErrorMessage", "Upload failed.");
+            logger.error("There was an error while uploading the user image");
             return "redirect:/register";
         }
 
         boolean resizeResult =  imageService.resizeImage(file);
         if(!resizeResult) {
             redirectAttributes.addFlashAttribute("resizeFailed", "Resize failed.");
+            logger.error("There was an error while resizing the user image");
             return "redirect:/register";
         }
         String[] splitted = file.toString().split("static");
 
         employee.setImageURL(splitted[1]);
-        System.out.println(splitted[1]);
 
         service.addEmployee(employee);
+
+        logger.info("User registered successfully");
 
         return "redirect:/login";
     }
@@ -114,6 +127,8 @@ public class EmployeeController {
         Task task = new Task();
         model.addAttribute("task", task);
 
+        logger.info("User accessed the employees list");
+
         return "employees";
     }
 
@@ -122,6 +137,9 @@ public class EmployeeController {
         Employee emp = service.getEmpById(id);
 
         model.addAttribute("emp", emp);
+
+        logger.info("User wants to edit his profile");
+
         return "edit";
     }
 
@@ -135,18 +153,23 @@ public class EmployeeController {
 
         if(imageFile.isEmpty()) {
             redirectAttributes.addFlashAttribute("noImageUploadedErrorMessage", "Please choose file to upload.");
+            logger.error("There was an error while uploading the user image");
             return "redirect:/edit/{id}";
         }
 
         File file = imageUploadService.upload(imageFile);
         if(file == null) {
             redirectAttributes.addFlashAttribute("uploadFailErrorMessage", "Upload failed.");
+            logger.error("There was an error while uploading the user image");
+
             return "redirect:/edit/{id}";
         }
 
         boolean resizeResult =  imageService.resizeImage(file);
         if(!resizeResult) {
             redirectAttributes.addFlashAttribute("resizeFailed", "Resize failed.");
+            logger.error("There was an error while resizing the user image");
+
             return "redirect:/edit/{id}";
         }
         String[] splitted = file.toString().split("static");
@@ -155,6 +178,9 @@ public class EmployeeController {
 
         model.addAttribute("isAdmin", isAdmin);
         service.addEmployee(emp);
+
+        logger.info("User edited his profile");
+
         return "redirect:/employees";
     }
 
@@ -167,6 +193,8 @@ public class EmployeeController {
         Boolean isAdmin = currentEmployee.getAdminRights();
 
         model.addAttribute("isAdmin", isAdmin);
+
+        logger.info("Admin deleted the employee with id = " + id);
 
         return "redirect:/employees";
     }
@@ -183,6 +211,7 @@ public class EmployeeController {
 
             redirectAttributes.addFlashAttribute("success", "Email sent successfully");
         }else{
+            logger.error("Email address is not valid");
             redirectAttributes.addFlashAttribute("error", "The email field is required");
         }
 
@@ -191,6 +220,7 @@ public class EmployeeController {
         Boolean isAdmin = currentEmployee.getAdminRights();
 
         model.addAttribute("isAdmin", isAdmin);
+        logger.info("Admin send a registration link successfully");
 
         return "redirect:/employees";
     }

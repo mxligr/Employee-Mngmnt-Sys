@@ -1,10 +1,13 @@
 package com.company.EmployeeManagementSystem.Controller;
 
+import com.company.EmployeeManagementSystem.EmployeeManagementSystemApplication;
 import com.company.EmployeeManagementSystem.Model.Email;
 import com.company.EmployeeManagementSystem.Model.Employee;
 
 import com.company.EmployeeManagementSystem.Model.Task;
 import com.company.EmployeeManagementSystem.Service.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,6 +28,8 @@ import java.util.List;
 @Transactional
 @Controller
 public class TaskController {
+    private static final Logger logger = LoggerFactory.getLogger(EmployeeManagementSystemApplication.class);
+
     @Autowired
     private TaskService service;
 
@@ -57,6 +62,8 @@ public class TaskController {
         service.addTask(task);
         redirectAttributes.addFlashAttribute("taskAssignedSuccessfully", "Task Assigned successfully");
 
+        logger.info("Task assign successfully to the employee with id = " + employeeId);
+
         return "redirect:/employees";
     }
 
@@ -74,6 +81,8 @@ public class TaskController {
 
         List<Task> listTasks = employee.getTasks();
         model.addAttribute("listTasks", listTasks);
+
+        logger.info("Task with id = " + taskId + " was marked as completed");
 
         return "tasks";
     }

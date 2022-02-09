@@ -1,3 +1,2 @@
 # Employee-Mngmnt-Sys
-Software Engineering project representing an Employee Management System using Java and Spring Boot.
-Includes Database Integration using MySQL, HTML, CSS, PHP and JavaScript.
+A web application representing an employee management system developed for the Software Engineering course in colaboration with @dianaahorvat // 3rd year, 1st semester @ Computer Science, TUCN 
